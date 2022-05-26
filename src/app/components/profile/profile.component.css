@@ -1,0 +1,83 @@
+.welcome-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 3rem 0;
+  padding: 25px;
+  border-radius: 20px;
+}
+.profile-image {
+  position: relative;
+  width: 120px;
+  margin: 0 2rem;
+}
+
+.profile-image > img {
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-image > button {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
+
+.form-container {
+  max-width: initial;
+  background: #fff;
+}
+
+.margin {
+  margin: 0 2rem;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+table {
+  min-width: 100%;
+}
+
+.member-form {
+  display: flex;
+}
+
+.width {
+  padding-left: 1rem;
+  max-width: 50%;
+}
+
+table {
+  background-color: #fff;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.add-member {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: beige;
+}
+
+.button {
+  background-color: greenyellow;
+  margin: 1rem;
+}

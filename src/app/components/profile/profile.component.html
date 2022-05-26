@@ -1,0 +1,83 @@
+<div *ngIf="user$ | async as user">
+
+  <div class="">
+    <div class="welcome-note mat-elevation-z5">
+      <div class="profile-image">
+        <img width="120" height="120" class="margin-top mat-elevation-z1"
+          [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
+        <button mat-mini-fab (click)="inputField.click()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="margin">
+        <h1>Welcome to E-Ration Shop {{user.displayName}}</h1>
+        <p>Please Add all of your family Members</p>
+      </div>
+    </div>
+
+    <input #inputField hidden type="file" (change)="uploadFile($event, user)" />
+    <div class="add-member">
+      <div class="">
+        <form [formGroup]="profileForm">
+          <div class=" margin-top row form-container  text-center">
+            <mat-form-field>
+              <input type="text" matInput formControlName="name" placeholder="Name" />
+              <mat-error *ngIf="name?.errors?.['required']">
+                name is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" matInput formControlName="age" placeholder="Age" />
+              <mat-error *ngIf="age?.errors?.['required']">
+                age is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>DOB</mat-label>
+              <input matInput [matDatepicker]="datepicker" formControlName="dob">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+              <mat-error *ngIf="dob?.errors?.['required']">
+                dob is required
+              </mat-error>
+            </mat-form-field>
+            <button type="submit" class="margin-top" mat-raised-button color="primary" (click)="addMember()">
+              Add
+            </button>
+          </div>
+
+        </form>
+
+        <div class="" *ngIf="dataSource.length >0">
+          <table>
+            <tr>
+              <th>S.NO.</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>DOB</th>
+            </tr>
+            <tr *ngFor="let row of dataSource let i=index">
+              <th>{{i+1}}.</th>
+              <th>{{row.name}}</th>
+              <th>{{row.age}}</th>
+              <th>{{row.dob | date: 'dd/MM/yyyy'}}</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <button type="submit" class="button" mat-raised-button (click)="saveProfile(user)">
+        Save You All Members
+      </button>
+    </div>
+
+    <button type="submit" class="button" mat-raised-button routerLink="/home">
+      Purchase the Products
+    </button>
+  </div>
+</div>

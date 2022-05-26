@@ -1,0 +1,122 @@
+<div class="form-container mat-elevation-z5 text-center">
+  <h1>Sign Up a New User!</h1>
+  <form class="margin-top" [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Family Head Name" formControlName="name" />
+      <mat-error *ngIf="name?.errors?.['required']">
+        Family Head Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Permanent Address</mat-label>
+      <textarea matInput formControlName="pAddress"></textarea>
+      <mat-error *ngIf="pAddress?.errors?.['required']">
+        Permanent Address is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Temporary Address</mat-label>
+      <textarea matInput formControlName="tAddress"></textarea>
+      <mat-error *ngIf="tAddress?.errors?.['required']">
+        Temporary Address is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phone" />
+      <mat-error *ngIf="phone?.errors?.['required']">
+        Phone Number is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Email address" formControlName="email" />
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email address is required
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>DOB</mat-label>
+      <input matInput [matDatepicker]="datepicker" formControlName="dob">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Occupation</mat-label>
+      <input matInput formControlName="occupation" />
+      <mat-error *ngIf="occupation?.errors?.['required']">
+        Occupation is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Annual Income</mat-label>
+      <input matInput formControlName="income" />
+      <mat-error *ngIf="income?.errors?.['required']">
+        Income is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nationality</mat-label>
+      <input matInput formControlName="nationality" />
+      <mat-error *ngIf="nationality?.errors?.['required']">
+        Nationality is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Religion</mat-label>
+      <input matInput formControlName="religion" />
+      <mat-error *ngIf="religion?.errors?.['required']">
+        Religion is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Community</mat-label>
+      <input matInput formControlName="community" />
+      <mat-error *ngIf="community?.errors?.['required']">
+        Community is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Caste</mat-label>
+      <input matInput formControlName="caste" />
+      <mat-error *ngIf="caste?.errors?.['required']">
+        Caste is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="password" />
+      <mat-error *ngIf="password?.errors?.['required']">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+      <mat-error *ngIf="confirmPassword?.errors?.['required']">
+        Confirm Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+      Passwords should match
+    </mat-error>
+    <div class="center margin-top">
+      <button type="submit" mat-raised-button color="primary">Sign Up!</button>
+    </div>
+  </form>
+</div>
